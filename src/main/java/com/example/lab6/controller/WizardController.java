@@ -47,7 +47,7 @@ public class WizardController {
                 , (int) Math.round(Double.parseDouble(data.get("money").get(0)))
                 , data.get("position").get(0))
         );
-        return ResponseEntity.ok(w);
+        return getWizards();
     }
 
     @RequestMapping(value = "/updateWizard", method = RequestMethod.POST)
@@ -62,9 +62,8 @@ public class WizardController {
                     , (int) Math.round(Double.parseDouble(data.get("money").get(0)))
                     , data.get("position").get(0))
             );
-            return ResponseEntity.ok(w);
         }
-        return ResponseEntity.ok(null);
+        return getWizards();
     }
 
     @RequestMapping(value = "/deleteWizard", method = RequestMethod.POST)

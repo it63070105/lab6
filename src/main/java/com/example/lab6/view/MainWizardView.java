@@ -97,7 +97,7 @@ public class MainWizardView extends VerticalLayout {
             formData.add("house", (house.getValue() == null ? "" : house.getValue().toString()));
             System.out.println("Sending Data to localhost:8080/addWizard : " + formData);
 
-            WebClient.create()
+            wizardList = WebClient.create()
                     .post()
                     .uri("http://localhost:8080/addWizard")
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -106,13 +106,13 @@ public class MainWizardView extends VerticalLayout {
                     .bodyToMono(Wizards.class)
                     .block();
 
-            wizardList = WebClient
-                    .create()
-                    .get()
-                    .uri("http://localhost:8080/wizards")
-                    .retrieve()
-                    .bodyToMono(Wizards.class)
-                    .block();
+//            wizardList = WebClient
+//                    .create()
+//                    .get()
+//                    .uri("http://localhost:8080/wizards")
+//                    .retrieve()
+//                    .bodyToMono(Wizards.class)
+//                    .block();
 
             new Notification("Wizard has been Created", 2000).open();
         });
@@ -128,7 +128,7 @@ public class MainWizardView extends VerticalLayout {
             formData.add("id", wizardList.getModel().get(index).get_id());
             System.out.println("Sending Data to localhost:8080/updateWizard : " + formData);
 
-            WebClient.create()
+            wizardList = WebClient.create()
                     .post()
                     .uri("http://localhost:8080/updateWizard")
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -137,13 +137,13 @@ public class MainWizardView extends VerticalLayout {
                     .bodyToMono(Wizards.class)
                     .block();
 
-            wizardList = WebClient
-                    .create()
-                    .get()
-                    .uri("http://localhost:8080/wizards")
-                    .retrieve()
-                    .bodyToMono(Wizards.class)
-                    .block();
+//            wizardList = WebClient
+//                    .create()
+//                    .get()
+//                    .uri("http://localhost:8080/wizards")
+//                    .retrieve()
+//                    .bodyToMono(Wizards.class)
+//                    .block();
 
             new Notification("Wizard has been Updated", 2000).open();
         });
